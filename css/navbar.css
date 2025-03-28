@@ -1,0 +1,154 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Navbar Styling */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #242222; /* Changed to black */
+    padding: 15px 5%;
+  }
+  
+  .button {
+    display: flex;
+    align-items: center;
+
+  }
+  
+  .sidebar-toggle {
+    background: none;
+    border: 1px solid white;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: 0.3s;
+  }
+  
+  .sidebar-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+  }
+  
+  .logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    padding: 8px 12px;
+    transition: 0.3s;
+  }
+  
+  .nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+  }
+  
+  .auth-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .auth-buttons a {
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: 0.3s;
+  }
+  
+  .login {
+    background: white;
+    color: #000; /* Changed to black */
+  }
+  
+  .register {
+    border: 1px solid white;
+    color: white;
+  }
+  
+  .login:hover,
+  .register:hover {
+    opacity: 0.8;
+  }
+  
+  /* Search Bar */
+  .search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .search-box {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 10px;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 50%;
+  }
+  
+  .search-box input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    flex: 1;
+    padding: 5px;
+  }
+  
+  .search-box i {
+    font-size: 18px;
+    margin-left: 10px;
+    color: gray;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .nav-links {
+      margin: 10px 0;
+    }
+  
+    .search-box {
+      width: 80%;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .nav-links {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .auth-buttons {
+      flex-direction: column;
+      gap: 5px;
+    }
+  
+    .search-box {
+      width: 90%;
+    }
+  }
+  
+  
