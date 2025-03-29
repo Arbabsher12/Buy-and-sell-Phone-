@@ -6,6 +6,7 @@
     <title>Phone Marketplace</title>
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/home.css">
 </head>
 
 <body>
@@ -20,6 +21,8 @@
     <div style="margin: 20px; padding: 20px;">
         <h1>Welcome to Phone Marketplace</h1>
         <p>Browse our selection of new and used phones.</p>
+        <div id="phone-container" class="phone-list"></div>
+
     </div>
 </body>
 </html>
