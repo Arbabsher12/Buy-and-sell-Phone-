@@ -56,8 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $errors[] = "Something went wrong. Please try again.";
         }
-        $stmt->close();
-    }
+        $stmt->close();    }
 }
 
 $conn->close();
