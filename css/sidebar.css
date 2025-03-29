@@ -1,74 +1,48 @@
-/* Sidebar Container (ensures it starts below navbar) */
-.sidebar-container {
-    margin-top: 60px; /* Adjust according to navbar height */
-  }
-  
-  /* Sidebar Styles */
+/* Sidebar Styles */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #f8f9fa;
+  color: #333;
+  position: fixed; /* Fix sidebar */
+  left: 0;
+  top: 60px; /* Adjust so it's below the navbar */
+  transition: transform 0.3s ease-in-out;
+  padding: 15px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 900; /* Keep it above main content but below navbar */
+  overflow-y: auto;
+}
+
+/* When sidebar is hidden */
+.sidebar.hidden {
+  transform: translateX(-100%);
+}
+
+/* Adjust content to move with sidebar */
+.main-content {
+  margin-left: 250px; /* Prevent content from overlapping sidebar */
+  margin-top: 60px; /* Prevent content from overlapping navbar */
+  padding: 20px;
+  transition: margin-left 0.3s ease-in-out;
+  max-width: 800px;
+}
+
+/* Hide sidebar for mobile */
+@media (max-width: 768px) {
   .sidebar {
-    width: 250px;
-    height: 100vh;
-    background: #f8f9fa;
-    color: #333;
-    position: fixed;
-    left: 0;
-    top: 0;
-    transform: translateX(0);
-    transition: transform 0.3s ease-in-out;
-    padding: 15px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    overflow-y: auto;
+      transform: translateX(-100%);
   }
-  
-  /* Sidebar visible when toggled */
+
   .sidebar.active {
-    left: 0;
+      transform: translateX(0);
   }
-  
-  /* Sidebar Headings */
-  .sidebar h3 {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 15px 0 10px 0;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 5px;
+
+  .main-content {
+      margin-left: 0;
   }
-  
-  /* Sidebar Checkbox Labels */
-  .sidebar label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 14px;
-    cursor: pointer;
-    padding: 5px;
-    transition: 0.2s;
-  }
-  
-  .sidebar label:hover {
-    background-color: #e9ecef;
-    border-radius: 4px;
-  }
-  
-  /* Checkbox Styling */
-  .sidebar input[type="checkbox"] {
-    margin-right: 8px;
-    cursor: pointer;
-  }
-  
-  /* Sidebar Toggle Button */
-  .sidebar-toggle {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 5px;
-  }
-  
+}
+
   /* Responsive: Hide sidebar by default on smaller screens */
   @media (min-width: 768px) {
     .sidebar {

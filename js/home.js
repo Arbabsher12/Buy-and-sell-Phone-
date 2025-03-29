@@ -17,6 +17,8 @@ function setupSidebar() {
     const sidebar = document.getElementById("sidebar");
     const showSidebarBtn = document.getElementById("show"); // From navbar.html
     const hideSidebarBtn = document.getElementById("hideSidebar");
+    const mainContent = document.querySelector(".main-content");
+    const navbar = document.getElementById("navbar-container");
 
     if (!sidebar || !showSidebarBtn || !hideSidebarBtn) {
         console.error("One or more sidebar elements are missing.");
@@ -26,12 +28,16 @@ function setupSidebar() {
     showSidebarBtn.addEventListener("click", () => {
         sidebar.style.transform = "translateX(0)";
         showSidebarBtn.style.display = "none";
+        mainContent.style.marginLeft = "250px";
+        navbar.style.marginLeft = "250px";
     });
 
     hideSidebarBtn.addEventListener("click", () => {
         sidebar.style.transform = "translateX(-100%)";
         setTimeout(() => {
             showSidebarBtn.style.display = "block";
+            mainContent.style.marginLeft = "0";
+            navbar.style.marginLeft = "0";
         }, 300);
     });
 }
@@ -54,8 +60,13 @@ function fetchPhones() {
                 const phoneBox = document.createElement("div");
                 phoneBox.className = "phone-box";
 
+                // Use 'none.jpg' if the image is missing or empty
+                const imagePath = phone.image && phone.image.trim() !== "" 
+                    ? `../uploads/${phone.image}` 
+                    : "../uploads/none.jpg";
+
                 phoneBox.innerHTML = `
-                    <img src="../uploads/${phone.image}" alt="${phone.name}" class="phone-image">
+                    <img src="${imagePath}" alt="${phone.name}" class="phone-image" onerror="this.onerror=null;this.src='../uploads/none.jpg';">
                     <h3>${phone.name}</h3>
                     <p>Price: $${phone.price}</p>
                 `;

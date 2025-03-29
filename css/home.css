@@ -3,21 +3,55 @@
     flex-wrap: wrap;
     gap: 20px;
     margin: 20px;
+    justify-content: center; /* Centers the phone boxes */
 }
 
 .phone-box {
-    width: 200px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
+    width: 220px;
+    padding: 15px;
+    border-radius: 12px;
     text-align: center;
-    background: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e0e0e0;
+    overflow: hidden; /* Ensures no content overflows */
+}
+
+.phone-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .phone-image {
     width: 100%;
-    height: 150px;
+    height: 160px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.phone-box:hover .phone-image {
+    transform: scale(1.05);
+}
+
+.phone-box h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 10px;
+}
+
+.phone-box p {
+    font-size: 16px;
+    color: #666;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.phone-box .price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff; /* Professional blue color */
+    margin-top: 8px;
 }
