@@ -16,45 +16,143 @@
     position: fixed; /* Fix navbar to top */
     width: 100%;
     top: 0;
-    left: 0;
-    z-index: 1000; /* Keep navbar above all elements */
+    
 }
 
 /* Push content down to avoid overlap */
 body {
     padding-top: 60px; /* Adjust this based on navbar height */
+    background-color: #f4f4f4;
 }
 
-  /* Responsive Design */
-  @media (max-width: 992px) {
+/* Navbar Buttons */
+.button .sidebar-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Logo */
+.logo {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 12px;
+    transition: 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+/* Authentication Buttons */
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Login & Register Buttons */
+.auth-buttons a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+.auth-buttons .login {
+    background-color: #007bff;
+}
+
+.auth-buttons .register {
+    background-color: #28a745;
+}
+
+.auth-buttons a:hover {
+    opacity: 0.8;
+}
+
+/* Profile Picture Styling */
+.auth-buttons .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.auth-buttons .profile-pic:hover {
+    transform: scale(1.1);
+}
+
+/* Search Box */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    
+}
+
+.search-box input {
+    min-width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
     .navbar {
-      flex-direction: column;
-      text-align: center;
+        flex-direction: column;
+        text-align: center;
     }
-  
+
     .nav-links {
-      margin: 10px 0;
+        margin: 10px 0;
     }
-  
-    .search-box {
-      width: 80%;
+
+    .search-box input {
+        width: 80%;
     }
-  }
-  
-  @media (max-width: 600px) {
+}
+
+@media (max-width: 600px) {
     .nav-links {
-      flex-direction: column;
-      gap: 10px;
+        flex-direction: column;
+        gap: 10px;
     }
-  
+
     .auth-buttons {
-      flex-direction: column;
-      gap: 5px;
+        flex-direction: column;
+        gap: 5px;
     }
-  
-    .search-box {
-      width: 90%;
+
+    .search-box input {
+        width: 90%;
     }
-  }
-  
-  
+
+    .auth-buttons .profile-pic {
+        width: 35px;
+        height: 35px;
+    }
+}

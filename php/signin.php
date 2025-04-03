@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         if ($stmt->execute()) {
-            header("Location: ../html/home.php"); // Redirect back to signup page
+            header("Location: ../html/home.html"); // Redirect back to signup page
             exit();
         } else {
             $errors[] = "Something went wrong. Please try again.";

@@ -1,5 +1,5 @@
 // Load navbar and sidebar dynamically
-fetch("/navbar.html")
+fetch("/navbar.php")
     .then(response => response.text())
     .then(data => {
         document.getElementById("navbar-container").innerHTML = data;
@@ -18,7 +18,7 @@ function setupSidebar() {
     const showSidebarBtn = document.getElementById("show"); // From navbar.html
     const hideSidebarBtn = document.getElementById("hideSidebar");
     const mainContent = document.querySelector(".main-content");
-    const navbar = document.getElementById("navbar-container");
+    const navbar = document.getElementById("navbar");
 
     if (!sidebar || !showSidebarBtn || !hideSidebarBtn) {
         console.error("One or more sidebar elements are missing.");
@@ -29,7 +29,7 @@ function setupSidebar() {
         sidebar.style.transform = "translateX(0)";
         showSidebarBtn.style.display = "none";
         mainContent.style.marginLeft = "250px";
-        navbar.style.marginLeft = "250px";
+       
     });
 
     hideSidebarBtn.addEventListener("click", () => {
@@ -37,8 +37,8 @@ function setupSidebar() {
         setTimeout(() => {
             showSidebarBtn.style.display = "block";
             mainContent.style.marginLeft = "0";
-            navbar.style.marginLeft = "0";
-        }, 300);
+            
+        }, 100);
     });
 }
 
