@@ -84,8 +84,11 @@ body {
 .auth-buttons .register {
     background-color: #28a745;
 }
+.auth-buttons .logout {
+    background-color: #f63409;
+}
 
-.auth-buttons a:hover {
+.auth-buttons .logo {
     opacity: 0.8;
 }
 
@@ -104,21 +107,6 @@ body {
     transform: scale(1.1);
 }
 
-/* Search Box */
-.search-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    
-}
-
-.search-box input {
-    min-width: 80%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    outline: none;
-}
 
 /* Responsive Design */
 @media (max-width: 992px) {

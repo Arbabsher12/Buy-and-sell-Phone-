@@ -1,6 +1,8 @@
 <?php
-session_start(); // Start session to store user data
-ob_start(); // Start output buffering
+session_start(); // Start session
+ob_start();
+ // Start output buffering
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -29,20 +31,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (empty($errors)) {
         // Check if email exists
-        $stmt = $conn->prepare("SELECT user_id, name, password FROM users WHERE email = ?");
+        $stmt = $conn->prepare("SELECT user_id, name, password, profile_picture FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $stmt->store_result();
 
         if ($stmt->num_rows > 0) {
-            $stmt->bind_result($id, $name, $hashed_password);
-            $stmt->fetch();
+            $stmt->bind_result($id, $name, $hashed_password, $dp);
+            $stmt->fetch(); 
 
-            // Verify password
-            if (password_verify($password, $hashed_password)) {
+
+            if( password_verify($password, $hashed_password)) {
+                // Store user details in session
                 $_SESSION['user_id'] = $id;
-                $_SESSION['user_name'] = $name;                
-                exit(); // Stop script execution
+                $_SESSION['user_name'] = $name;
+                $_SESSION['profile_picture'] = !empty($dp) ? $dp : "default.jpg"; // Set default if null
+                
+                
+                session_write_close(); // Ensure session is saved before redirecting
+
+                header("Location: ../html/home.html"); // Redirect to home page
+                exit();
             } else {
                 $errors[] = "Incorrect password.";
             }
@@ -50,17 +59,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $errors[] = "No account found with this email.";
         }
 
-        if ($stmt->execute()) {
-            header("Location: ../html/home.html"); // Redirect back to signup page
-            exit();
-        } else {
-            $errors[] = "Something went wrong. Please try again.";
-        }
-        $stmt->close();    }
+        $stmt->close();
+    }
+}
+
+
+ 
+
+// If there are errors, redirect back to login with error messages
+if (!empty($errors)) {
+    $_SESSION['login_errors'] = $errors;
+    session_write_close();
+    header("Location: ../html/login.php");
+    exit();
 }
 
 $conn->close();
-ob_end_flush(); // Start output buffering
+ob_end_clean();
+
 ?>
-
-

@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         if ($stmt->execute()) {
             $_SESSION['success'] = "Registration successful! You can now log in.";
-            header("Location: login.php"); // Redirect back to signup page
+            header("Location: ../html/login.php"); // Redirect back to signup page
             exit();
         } else {
             $errors[] = "Something went wrong. Please try again.";

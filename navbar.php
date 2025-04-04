@@ -6,10 +6,10 @@ if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
 
     // Database connection
-    include('../php/db.php');
+    include  './php/db.php';
 
     // Fetch user details (assuming you have a 'users' table with 'profile_picture' column)
-    $query = "SELECT profile_picture FROM users WHERE id = ?";
+    $query = "SELECT profile_picture FROM users WHERE user_id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
@@ -48,9 +48,11 @@ if (isset($_SESSION['user_id'])) {
 
         <div class="auth-buttons">
             <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="profile.php">
-                    <img src="../uploads/<?php echo htmlspecialchars($profile_picture); ?>" alt="Profile" class="profile-pic">
-                </a>
+
+                <img src="../uploads/<?php echo htmlspecialchars($profile_picture); ?>" alt="Profile" class="profile-pic">
+
+                <a href="" class="logout" >LOG OUT</a>
+
             <?php else: ?>
                 <a href="../html/login.php" class="login" >Log in</a>
                 <a href="signup.php" class="register" >Register</a>

@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,7 +64,19 @@
     <div class="container d-flex align-items-center justify-content-center min-vh-100">
         <div class="login-box">
             <h2>Login</h2>
-            <?php include '../php/signup_error.php'; ?>
+            <?php 
+         if (!empty($_SESSION['login_errors'])): ?>
+           <div class="alert alert-danger">
+           <?php 
+             foreach ($_SESSION['login_errors'] as $error) {
+            echo "<p>$error</p>";
+        }
+        unset($_SESSION['login_errors']); // Clear errors after displaying
+        ?>
+    </div>
+<?php endif; ?>
+
+            
             <form action="../php/signin.php" method="POST">
             
                 <div class="mb-3 input-group">
@@ -83,7 +99,7 @@
                 <a href="#"><i class="fab fa-google"></i></a>
             </div>
             <p class="mt-3">Or Sign Up Using</p>
-            <a href="home.html" class="fw-bold text-decoration-none" style="color:#3A00E5;">SIGN UP</a>
+            <a href="signup.php" class="fw-bold text-decoration-none" style="color:#3A00E5;">SIGN UP</a>
         </div>
     </div>
     <!-- Bootstrap JS -->
